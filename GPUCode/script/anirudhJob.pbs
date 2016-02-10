@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -N anirudhJob
+#PBS -j oe
+#PBS -r n
+#PBS -A nuim01
+#PBS -l nodes=1:ppn=20
+#PBS -l walltime=00:10:00
+#PBS -q GpuQ
+
+module load dev
+
+#For CUDA v7.0
+module load cuda/7.0
+
+#For OpenCV 2.4.10
+module load apps opencv/intel/2.4.10
+
+cd $PBS_O_WORKDIR
+
+./main /ichec/home/users/anirudh/input.png /ichec/home/users/anirudh/back.png /ichec/home/users/anirudh/gt.png 2 3 2 15.0 0.7 /ichec/home/users/anirudh/outA.png /ichec/home/users/anirudh/outAF.png

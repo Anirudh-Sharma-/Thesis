@@ -1,0 +1,21 @@
+GPUImplementation:  This folder contains the full code for running GPU implementation. File "histo.cu" contains "createHisto" (which is a 			    kernel caller function) and "histo_kernel" function (which is a kernel which creates histogram on GPU). This "histo.cu" 			    file contains code with 1024 threads launched per block. Furthermore in this each thread is mapped to only one pixel.
+		    Instructions for changing the mapping to required number of pixels are provided as comments in "histo.cu" file only.
+32		: This folder contains "histo.cu" file where each thread block consists of 32 threads.
+64		: This folder contains "histo.cu" file where each thread block consists of 64 threads.
+128		: This folder contains "histo.cu" file where each thread block consists of 128 threads.
+256		: This folder contains "histo.cu" file where each thread block consists of 256 threads.
+512		: This folder contains "histo.cu" file where each thread block consists of 512 threads.
+
+
+For running this code access to Fionn GPGPU is required. After accessing this following steps could be followed to execute the code:
+1) module load dev cuda/7.0 apps opencv/intel/2.4.10
+2) nvcc histo.cu main.cpp -I/ichec/packages/cuda/7.0/include/ -I$OPENCV_ROOT/include -L$OPENCV_ROOT/lib -lopencv_core -lopencv_nonfree -lopencv_gpu -o main
+3) qsub anirudhJob.pbs (this file is present in script folder)
+Arguments required for execution is provided in "arguments" folder. This folder contains images of size 2400x2400, however other images with different image sizes could also be used. Though images to be used should .png format and 3channel RGB.
+
+
+deviceInfo: this folder contains the code which could be used to collect the information of Nvidia GPUs. It also contains text file showing the output of running this code on fionn.
+On fionn steps for running the code in "deviceInfo" folder are following:
+1) module load dev cuda/5.5
+2) nvcc deviceInfo.cu -o deviceInfo
+3)./deviceInfo

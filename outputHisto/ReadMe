@@ -1,0 +1,2 @@
+This folder contains two text files "histoNonZeroCPU.txt" and "histoNonZeroGPU.txt". One from CPU and other from GPU implementation. These two text files shows list of histogram indexes with value in the index. In this file only those indexes are listed which have non-zero values in them becuase in this way it is easy to evaluate the correctness of the GPU code. 
+It also contains the images for which this histogram is created.
